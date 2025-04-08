@@ -137,7 +137,7 @@ namespace app {
 
             for (Statistics &stat: result.data) {
                 if (printFullStat) {
-                    info("%s %s: %" PRIu64 "/ %.0f / %" PRIu64 " / %" PRIu64 " \n",
+                    info("%s %s: %" PRIu64 " / %.0f / %" PRIu64 " / %" PRIu64 " \n",
                          stat.name.c_str(), stat.unit.c_str(),
                          stat.total, stat.avrg, stat.min, stat.max);
                 } else {
