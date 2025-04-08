@@ -20,3 +20,6 @@ scripts/py/venv*
 env
 venv
 __pycache__*
+
+# TFLite
+models
