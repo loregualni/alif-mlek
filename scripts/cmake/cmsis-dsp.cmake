@@ -49,7 +49,7 @@ file(GLOB_RECURSE
     "${CMSIS_DSP_SRC_DIR}/FastMathFunctions/arm_*.c"
     "${CMSIS_DSP_SRC_DIR}/CommonTables/arm_*.c"
     "${CMSIS_DSP_SRC_DIR}/TransformFunctions/arm_*.c"
-    "${CMSIS_DSP_SRC_DIR}/StatisticsFunctions/arm_*.c"
+    "${CMSIS_DSP_SRC_DIR}/StatisticsFunctions/arm_*f32.c"
 
     # Issue with q15 and q31 functions with Arm GNU toolchain, we only
     # need f32 functions.

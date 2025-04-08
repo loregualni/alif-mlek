@@ -86,7 +86,8 @@ add_compile_options(
     -Wall
     -Wextra
     -Wvla
-    -Wno-psabi)
+    -Wno-psabi
+    -Wno-error=incompatible-pointer-types)
 
 # General purpose compile options:
 add_compile_options(
