@@ -28,6 +28,10 @@ extern "C" {
 #define NANOSECONDS_IN_MILLISECOND  1000000
 #define NANOSECONDS_IN_MICROSECOND  1000
 
+void platform_init_counters() { /* Nothing to do */ }
+
+void platform_final_counters() { /* Nothing to do */ }
+
 void platform_reset_counters() { /* Nothing to do */ }
 
 void platform_get_counters(pmu_counters* counters)

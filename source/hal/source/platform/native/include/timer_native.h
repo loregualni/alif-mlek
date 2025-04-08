@@ -22,6 +22,10 @@
 #include <stdint.h>
 #include <time.h>
 
+void platform_init_counters();
+
+void platform_final_counters();
+
 /**
  * @brief   Resets the counters.
  */
