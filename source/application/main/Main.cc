@@ -57,9 +57,6 @@ int main ()
         /* Enable TensorFlow Lite Micro logging. */
         EnableTFLMLog();
 
-        /* Initialize TensorFlow Lite Micro logging. */
-        InitTensorFlowDebug();
-
         std::set_new_handler(out_of_heap);
 
         /* Run the application. */

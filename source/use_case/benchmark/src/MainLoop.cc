@@ -53,12 +53,6 @@ extern size_t GetModelLen();
 } /* namespace app */
 } /* namespace arm */
 
-enum opcodes
-{
-    MENU_OPT_RUN_INF_NEXT = 1,       /* Run on next vector. */
-    MENU_OPT_SHOW_MODEL_INFO,        /* Show model info. */
-};
-
 static void ArmEthosBenchmark()
 {
     arm::app::TestModel model;  /* Model wrapper object. */
@@ -107,7 +101,7 @@ static void TFLiteBenchmark()
     }
 }
 
-void main_loop()
+void MainLoop()
 {
     printf("============================ Arm Ethos-U Benchmark =============================\n\n");
     ArmEthosBenchmark();

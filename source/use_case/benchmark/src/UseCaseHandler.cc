@@ -119,6 +119,9 @@ bool RunInferenceHandler(ApplicationContext& ctx)
     auto& profiler = ctx.Get<Profiler&>("profiler");
     auto& model = ctx.Get<Model&>("model");
 
+    constexpr uint32_t dataPsnTxtInfStartX = 150;
+    constexpr uint32_t dataPsnTxtInfStartY = 40;
+
     if (!model.IsInited()) {
         printf_err("Model is not initialised! Terminating processing.\n");
         return false;
@@ -135,13 +138,26 @@ bool RunInferenceHandler(ApplicationContext& ctx)
     DumpInputs(model, "input tensors populated");
 #endif /* VERIFY_TEST_OUTPUT */
 
-    info("Running inference...\n");
+    /* Strings for presentation/logging. */
+    std::string str_inf{"Running inference... "};
+
+    /* Display message on the LCD - inference running. */
+    hal_lcd_display_text(str_inf.c_str(), str_inf.size(),
+                         dataPsnTxtInfStartX, dataPsnTxtInfStartY, 0);
+
     if (!RunInference(model, profiler)) {
         return false;
     }
+
+    /* Erase. */
+    str_inf = std::string(str_inf.size(), ' ');
+    hal_lcd_display_text(
+                            str_inf.c_str(), str_inf.size(),
+                            dataPsnTxtInfStartX, dataPsnTxtInfStartY, 0);
+
     info("Final results:\n");
     info("Total number of inferences: 1\n");
-    profiler.PrintProfilingResult(true);
+    profiler.PrintProfilingResult();
 
 #if VERIFY_TEST_OUTPUT
     DumpOutputs(model, "output tensors post inference");
