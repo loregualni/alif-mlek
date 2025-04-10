@@ -1,19 +1,17 @@
 #!/usr/bin/bash
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <model.tflite>"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <use case> <tflite model>"
     exit 1
 fi
 
 SCRIPT_FILE="$0"
-MODEL_FILE="$1"
-
-USE_CASE="benchmark"
+USE_CASE="$1"
+MODEL_FILE="$2"
 
 SCRIPT_DIR="$(dirname $SCRIPT_FILE)"
 MLEK_DIR="$SCRIPT_DIR/../../../.."
 BUILD_DIR="$MLEK_DIR/builds/native"
-
 
 # create building scripts
 set -x

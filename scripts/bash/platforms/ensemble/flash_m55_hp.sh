@@ -1,25 +1,25 @@
 #!/usr/bin/bash
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <port>"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <use case> <usb port>"
     exit 1
 fi
 
 SCRIPT_FILE="$0"
-PORT_NAME="$1"
+USE_CASE="$1"
+PORT_NAME="$2"
 
-OUT_NAME="m55_hp_benchmark"
-
+BIN_NAME="m55_hp_$USE_CASE"
 SCRIPT_DIR="$(dirname $SCRIPT_FILE)"
 MLEK_DIR="$SCRIPT_DIR/../../../.."
-INFRUN_JSON="$SCRIPT_DIR/config/$OUT_NAME.json"
+INFRUN_JSON="$SCRIPT_DIR/config/$BIN_NAME.json"
 
 BUILD_DIR="$MLEK_DIR/builds/ensemble-hp"
-INFRUN_BIN="$BUILD_DIR/bin/sectors/benchmark/mram.bin"
+INFRUN_BIN="$BUILD_DIR/bin/sectors/$USE_CASE/mram.bin"
 
 SETOOLS_DIR="$HOME/app-release-exec-linux"
-SETOOLS_IMAGE="$SETOOLS_DIR/build/images/$OUT_NAME.bin"
-SETOOLS_CONFIG="$SETOOLS_DIR/build/config/$OUT_NAME.json"
+SETOOLS_IMAGE="$SETOOLS_DIR/build/images/$BIN_NAME.bin"
+SETOOLS_CONFIG="$SETOOLS_DIR/build/config/$BIN_NAME.json"
 
 # copy binary and configuration to setools directory
 set -x
